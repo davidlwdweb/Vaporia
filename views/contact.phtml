@@ -1,0 +1,41 @@
+<section class="container">
+    
+<?php require_once '_errors.phtml'; ?>
+<?php require_once '_valids.phtml'; ?>
+    
+    
+    <h2>Page de contacte</h2>
+    
+    <article class="field fields">
+        <p>Vous pouvez joindre à tout moment l'équipe Vaporia grâce au formulaire ci-dessous.</p>
+        
+        <form action="index.php?page=contact" method="POST">
+            <fieldset>
+                <div>
+                    <label for="lastname">Nom :</label>
+                    <input type="text" name="lastname" id="lastname" placeholder="Entrez votre nom">
+                </div>
+                
+                <div>
+                    <label for="email">Email :</label>
+                    <input type="text" name="email" id="email" placeholder="Entrez votre Email">
+                </div>
+                
+                <div>
+                    <label for="message">Message :</label>
+                    <textarea name="message" id="message" placeholder="Comment pouvons nous aider ?"></textarea>
+                </div>
+                
+                <input type="hidden" name="token" value="<?= $token; ?>"/>
+                
+                <div>
+                    <button>Envoyer</button>
+                </div>
+            </fieldset>
+        </form>
+        
+        <p class="center"><i>Attention, L'équipe Vaporia ne vous demanderons jamais votre mot de passe !</i></p>
+        
+    </article>
+    
+</section>

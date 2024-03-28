@@ -1,0 +1,107 @@
+<section>
+    
+    <?php if(isset($_GET['register']) && $_GET['register'] === 'ok'): ?>
+        <div class="valid">
+          Félicitation, vous êtes bien enregistré !
+        </div>
+    <?php endif ?>
+        
+    
+    <section class="container-slider">
+        <div class="slider-wrapper">
+            <div class="slider">
+                <img id="slide-1" src="./public/img/carrousel/gobar.jpeg" alt="Une cigarette électronique avancée dotée d'un réservoir transparent, permettant de suivre facilement le niveau de liquide restant.">
+                <img id="slide-2" src="./public/img/carrousel/freeMax.jpeg" alt="Une cigarette électronique élégante, argentée et compacte, parfaite pour les vapoteurs en déplacement.">
+                <img id="slide-3" src="./public/img/carrousel/manner.jpeg" alt="Une vape pen au design minimaliste, légère et discrète, idéale pour une expérience de vapotage facile et portable.">
+            </div>
+        </div>
+    </section>
+    
+    <section class="container">
+        
+        <h2>LES NOUVEAUTÉS</h2>
+        
+        <article class="article-cards">
+            
+        <?php if(count($items) != 0): ?>
+            <?php foreach ($items as $item): ?>
+                <div class="card">
+                    <a href="?page=item&id=<?= $item['id_item']; ?>">
+                        <div class="card-image"><img src="public/img/uploads/items/<?= htmlspecialchars($item['picture']) ?>" alt="<?= htmlspecialchars($item['caption']) ?>" /></div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3><?= htmlspecialchars($item['title'], ENT_QUOTES) ?></h3>
+                            </div>
+                            <div class="card-excerpt">
+                                <p><?= htmlspecialchars($item['description'], ENT_QUOTES) ?></p>
+                            </div>
+                            <div class="card-price">
+                                <p><?= htmlspecialchars($item['price'], ENT_QUOTES) ?> €</p>
+                                <a href="?page=addToCart&id=<?= htmlspecialchars($item['id_item'], ENT_QUOTES) ?>"><i class="fa-solid fa-basket-shopping"></i></a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach ?>
+        <?php else: ?>
+            <p>Désolé, aucun article dans cette catégorie !</p>
+        <?php endif ?>
+    
+        </article>
+        
+        <h2>NOS ACCESSOIRES DE CIGARETTE ELECTRONIQUE</h2>
+        
+        <article class="article-cards">
+            
+        <?php if(count($packs) != 0): ?>
+            <?php foreach ($packs as $pack): ?>
+                <div class="card">
+                    <a href="?page=item&id=<?= $pack['id_item']; ?>">
+                        <div class="card-image"><img src="public/img/uploads/items/<?= htmlspecialchars($pack['picture']) ?>" alt="<?= htmlspecialchars($pack['caption']) ?>" /></div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3><?= htmlspecialchars($pack['title'], ENT_QUOTES) ?></h3>
+                            </div>
+                            <div class="card-excerpt">
+                                <p><?= htmlspecialchars($pack['description'], ENT_QUOTES) ?></p>
+                            </div>
+                            <div class="card-price">
+                                <p><?= htmlspecialchars($pack['price'], ENT_QUOTES) ?> €</p>
+                                <a href="?page=addToCart&id=<?= htmlspecialchars($pack['id_item'], ENT_QUOTES) ?>"><i class="fa-solid fa-basket-shopping"></i></a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach ?>
+        <?php else: ?>
+            <p>Désolé, aucun article dans cette catégorie !</p>
+        <?php endif ?>
+    
+        </article>
+    </section>
+    
+    <section class="container article">
+        
+        <h3>Excellence en Toute Chose !</h3>
+        <article class="article-1">
+            <img class="article-img" src="./public/img/article/will-smith-meme.png" alt="Will Smith, captivant et élégant, attire l'attention sur un article fascinant.">
+            <h4  class="article-title">Notre Engagement envers la Qualité</h4>
+        
+            <p>Chez Vaporia, la qualité est notre boussole. 
+            Chaque produit que nous sélectionnons est minutieusement choisi pour offrir une expérience de vapotage inégalée. 
+            De nos cigarettes électroniques aux e-liquides, en passant par les accessoires, nous nous engageons à ne proposer que des articles de la plus haute qualité. 
+            Notre passion pour la vape se reflète dans chaque détail, garantissant que vous profitez de produits sûrs, authentiques et performants. 
+            Avec Vaporia, votre satisfaction est notre priorité absolue. 
+            Plongez dans notre monde de produits d'exception et savourez chaque inhalation en toute confiance.</p>
+            
+        </article>
+        
+        <div class="stop-float"></div>
+        
+    </section>
+    
+    
+    <script type="text/javascript" src="public/js/slider.js"></script>
+    
+</section>
+

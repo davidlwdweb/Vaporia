@@ -1,0 +1,53 @@
+<section class="container">
+    
+    <p><a href="?page=admin"> Menu administrateur</a> > <span class="current">Liste des messages</span></p>
+    
+    <h2>Messages reçus</h2>
+    
+    <table class="fields">
+        <caption class="admin_title">
+            Liste des messages
+        </caption>
+        <tbody>
+            <tr>
+                <th class="hidden_tablet">État du message</th>
+                <th>Nom</th>
+                <th class="hidden_mobile">Mail</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+            
+            <?php foreach($messages as $message): ?>
+            
+            <tr <?php if($message['status'] == 1 ){ echo 'class="green"';} ?>>
+                <td class="hidden_tablet"> 
+                    <?php if($message['status'] === 1): ?>
+                        <p>Lu</p>
+                        <?php else: ?>
+                            <p>Non lu</p>
+                        <?php endif ?>
+                </td>
+                <td><?= htmlspecialchars($message['lastname'], ENT_QUOTES) ?></td>
+                <td class="hidden_mobile"><?= htmlspecialchars($message['email'], ENT_QUOTES) ?></td>
+                <td><?= htmlspecialchars($message['date'], ENT_QUOTES) ?></td>
+                <td><a class="button-green" href="?page=message&id=<?= $message['id_contact']; ?>">visualiser</a>
+                    <?php if($message['status'] == 1): ?>
+                        
+                        <form method="POST" action="index.php?page=deleteMessageById" onsubmit="return confirmDelete()">
+                            <div>
+                                <input type="hidden" name="id" value="<?= htmlspecialchars($message['id_contact']); ?>">
+                                <input class="button-red" type="submit" name="delete" value="Supprimer">
+                            </div>
+                        </form>
+                        
+                    <?php endif ?>
+                </td>
+            </tr>
+                
+            <?php endforeach ?>
+        </tbody>
+    </table>
+    
+</section>
+
+<script type="text/javascript" src="public/js/confirmDelete.js"></script>

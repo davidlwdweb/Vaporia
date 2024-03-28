@@ -1,0 +1,37 @@
+<section class="container">
+    
+    <p><a href="?page=admin"> Menu administrateur</a> > <span class="current">Liste des produits du site</span></p>
+    <a class="button" href="?page=admin_items_add">Ajouter un produit</a>
+    
+    
+    <table class="fields">
+        <caption class="admin_title">
+            Liste des produits du site
+        </caption>
+        <tbody>
+            <tr>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th class="hidden_mobile">Marque</th>
+                <th class="hidden_mobile hidden_tablet">Catégorie</th>
+            </tr>
+            
+            <?php foreach($items as $item): ?>
+            
+            <tr <?php if($item['available'] == 2 ){ echo 'class="red"';} ?>>
+                <td><?= htmlspecialchars($item['title'], ENT_QUOTES) ?></td>
+                <td><?= htmlspecialchars($item['price'], ENT_QUOTES) ?></td>
+                <td><?= htmlspecialchars($item['quantity'], ENT_QUOTES) ?></td>
+                <td class="hidden_mobile"><?= htmlspecialchars($item['maker'], ENT_QUOTES) ?></td>
+                <td class="hidden_mobile hidden_tablet"><?= htmlspecialchars($item['categorie_title'], ENT_QUOTES) ?></td>
+                <td><a href="?page=admin_update&id=<?= $item['id_item']; ?>"><i class="fa-solid fa-pen"></i></a></td>
+                <td><img class="items_img" src="public/img/uploads/items/<?= htmlspecialchars($item['picture']) ?>"></td>
+            </tr>
+                
+            <?php endforeach ?>
+        </tbody>
+    </table>
+    
+    
+</section>

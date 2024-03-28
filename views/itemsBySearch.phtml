@@ -1,0 +1,22 @@
+<?php if(count($items) != 0): ?>
+    <?php foreach($items as $item): ?>
+        <div class="card">
+                <a href="?page=item&id=<?= $item['id_item']; ?>">
+                <div class="card-image"><img src="public/img/uploads/items/<?= htmlspecialchars($item['picture']) ?>" alt="Orange" ></img></div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3><?= htmlspecialchars($item['title'], ENT_QUOTES) ?></h3>
+                    </div>
+                    <div class="card-excerpt">
+                        <p><?= htmlspecialchars($item['description'], ENT_QUOTES) ?></p>
+                    </div>
+                    <div class="card-price">
+                        <p><?= htmlspecialchars($item['price'], ENT_QUOTES) ?> €</p><i class="fa-solid fa-basket-shopping"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+    <?php endforeach ?>
+<?php else: ?>
+    <p>Désolé, aucun article dans cette catégorie !</p>
+<?php endif ?>

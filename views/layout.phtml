@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaporia</title>
+    <meta name="description" content="Bienvenue chez Vaporia, votre destination en ligne pour une expérience de vape exceptionnelle. 
+    Découvrez notre vaste collection de cigarettes électroniques, e-liquides aux saveurs exquises et accessoires de qualité. 
+    Que vous soyez débutant ou expert en vape, notre boutique vous propose des produits adaptés à tous les besoins. 
+    Nous mettons l'accent sur la sécurité, la qualité et la satisfaction de nos clients.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="public/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="public/css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="public/css/style.css" type="text/css">
+</head>
+
+<body>
+    <header>
+    	
+    	<nav class="navbar">
+    		<h1><a href="?page=home">Vaporia</a></h1>
+    		<div class="navbar-menu">
+	    		<button id="dark_mode_button">Changer le thème</button>
+	    		<ul class="navbar-categories">
+	    			<?php if(isset($_SESSION['categories'])): ?>
+	                	<?php foreach($_SESSION['categories'] as $categorie): ?>
+		                	<li><a href="?page=items&idCat=<?= htmlspecialchars($categorie['id_categorie'], ENT_QUOTES) ?>"><?= htmlspecialchars($categorie['title'], ENT_QUOTES) ?></a></li>
+	                	<?php endforeach; ?>
+	                <?php endif; ?>
+	                <li><a href="?page=contact">Nous contacter</a></li>
+	                <li><a href="?page=cart">Panier</a></li>
+				</ul>
+				<ul class="navbar-profil">
+					
+	                <?php if(!isset($_SESSION['id_user'])){ ?>
+				            <li><a href="?page=login">Se connecter</a></li>
+				            <li><a href="?page=register">Créer un compte</a></li>
+				        <?php } else { ?>
+				            <li><a href="?page=profil">Mon profil</a></li>
+				            <li><a href="?page=logout">Se déconnecter</a></li>
+				            <?php if(isset($_SESSION['rank']) && $_SESSION['rank'] == 1): ?>
+				            	<li><a href="?page=admin">Panneau d'administration</a></li>
+				            <?php endif ?>
+				        <?php } ?>
+				        
+	    		</ul>
+	    	</div>
+	    		
+	    	<span class="burger"><i class="fa-solid fa-bars"></i></span>
+    	</nav>
+    	
+	    
+    </header>
+    
+    <main>
+    	<?php $router->callActionFromRequest(); ?>
+    </main>
+    
+    
+    <footer>
+        <div class="footer footer-title">
+			<section>
+				<h2>Vaporia</h2>
+				<p class="txt-l">Nous vous remercions de votre visite sur Vaporia, votre destination ultime pour une expérience de vape exceptionnelle.
+				Pour rester à jour avec les dernières nouveautés et actualités de l'univers de la vape, nous vous invitons à suivre Vaporia sur nos réseaux sociaux.
+				Merci de nous avoir choisis et à bientôt pour une expérience de vape inégalée.</p>
+			</section>
+			<section class="social">
+				<h3>Suivez-nous !</h3>
+				<div>
+					<a href="" class="facebook"><i class="fa-brands fa-facebook"></i>Facebook</a>
+                    <a href="" class="twitter"><i class="fa-brands fa-twitter"></i>Twitter</a>
+                    <a href="" class="instagram"><i class="fa-brands fa-instagram"></i>Instagram</a>
+				</div>
+			</section>
+		</div>
+    </footer>
+    
+    <script type="text/javascript" src="public/js/burger.js"></script>
+    <script type="text/javascript" src="public/js/darkMode.js"></script>
+    
+</body>
+</html>

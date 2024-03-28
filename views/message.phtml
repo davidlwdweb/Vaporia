@@ -1,0 +1,24 @@
+<section class="container">
+    
+    <p><a href="?page=admin"> Menu administrateur</a> > <a href="?page=recipse_message">Liste des messages</a> > <span class="current">Message reçu de <?= htmlspecialchars($message['lastname'], ENT_QUOTES); ?></span></p>
+    
+    
+    <h2>Message reçu le <span><?= htmlspecialchars($message['date'], ENT_QUOTES); ?></span></h2>
+    
+    <article class="fields">
+        <p>Nom : <span><?= htmlspecialchars($message['lastname'], ENT_QUOTES); ?></span></p>
+        <p>Mail : <span><?= htmlspecialchars($message['email'], ENT_QUOTES); ?></span></p>
+        <p>Message : <span><?= htmlspecialchars($message['message'], ENT_QUOTES); ?></span></p>
+        
+        <form method="POST" action="index.php?page=deleteMessageById" onsubmit="return confirmDelete()">
+            <div>
+                <input type="hidden" name="id" value="<?= htmlspecialchars($message['id_contact']); ?>">
+                <input type="submit" name="delete" value="Supprimer">
+            </div>
+        </form>
+        
+    </article>
+</section>
+
+
+<script type="text/javascript" src="public/js/confirmDelete.js"></script>

@@ -1,0 +1,46 @@
+<section class="container">
+    
+    <?php if (isset($_SESSION['categories'])): ?>
+        <?php foreach ($_SESSION['categories'] as $categorie): ?>
+            <?php if ($categorie['id_categorie'] == $_GET['idCat']): ?>
+                <h2><?= htmlspecialchars($categorie['title'], ENT_QUOTES); ?></h2>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    
+        <div class="filter-items">
+            <label for="search">Rechercher :</label>
+            <input type="text" id="search"/>
+        </div> 
+        
+        
+        <article class="article-cards"  id="target">
+            <?php if(count($items) != 0): ?>
+                <?php foreach($items as $item): ?>
+                    <div class="card">
+                            <a href="?page=item&id=<?= $item['id_item']; ?>">
+                            <div class="card-image"><img src="public/img/uploads/items/<?= htmlspecialchars($item['picture']) ?>" alt="<?= htmlspecialchars($item['caption']) ?>" ></img></div>
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h3><?= htmlspecialchars($item['title'], ENT_QUOTES) ?></h3>
+                                </div>
+                                <div class="card-excerpt">
+                                    <p><?= htmlspecialchars($item['description'], ENT_QUOTES) ?></p>
+                                </div>
+                                <div class="card-price">
+                                    <p><?= htmlspecialchars($item['price'], ENT_QUOTES) ?> €</p>
+                                    <a href="?page=addToCart&id=<?= htmlspecialchars($item['id_item'], ENT_QUOTES) ?>"><i class="fa-solid fa-basket-shopping"></i></a>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach ?>
+            <?php else: ?>
+                <p>Désolé, aucun article dans cette catégorie !</p>
+            <?php endif ?>
+        </article>
+    
+</section>
+
+
+<script type="text/javascript" src="public/js/searchAjax.js"></script>

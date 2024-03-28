@@ -1,0 +1,31 @@
+<section>
+    
+    <h2><?= htmlspecialchars($itemId['categorie_title'], ENT_QUOTES) ?></h2>
+    
+    <article class="field fields">
+        
+        <h3><?= htmlspecialchars($itemId['title'], ENT_QUOTES) ?></h3>
+        
+        <img class="item-image" src="public/img/uploads/items/<?= htmlspecialchars($itemId['picture'], ENT_QUOTES) ?>" alt="<?= htmlspecialchars($itemId['caption'], ENT_QUOTES) ?>">
+        
+        <h3><?= htmlspecialchars($itemId['maker'], ENT_QUOTES) ?></h3>
+        
+        <?php if ($itemId['power'] !== null): ?>
+        <p>Puissance : <?= htmlspecialchars($itemId['power'], ENT_QUOTES) ?> w</p>
+        <?php endif; ?>
+        
+        <?php if ($itemId['capacity'] !== null): ?>
+        <p>Capacité : <?= htmlspecialchars($itemId['capacity'], ENT_QUOTES) ?> ml</p>
+        <?php endif; ?>
+        
+        <?php if ($itemId['battery'] !== null): ?>
+        <p>Batterie : <?= htmlspecialchars($itemId['battery'], ENT_QUOTES) ?> mAh</p>
+        <?php endif; ?>
+        
+        <p><?= htmlspecialchars($itemId['description'], ENT_QUOTES) ?></p>
+        
+        <p><a class="card-price" href="?page=addToCart&id=<?= htmlspecialchars($itemId['id_item'], ENT_QUOTES) ?>"><?= htmlspecialchars($itemId['price'], ENT_QUOTES) ?> € <i class="fa-solid fa-basket-shopping"> </i></a></p>
+        
+    </article>
+    
+</section>

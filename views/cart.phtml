@@ -1,0 +1,58 @@
+<section>
+    
+    <h2>Votre panier</h2>
+    
+    <article class="fields">
+        
+        <?php if(empty($productsBasket)): ?>
+            
+            <h3>Le panier est vide.</h3>
+            <p>Le panier est vide, mais ne vous inquiétez pas, 
+            vous pouvez faire un tour dans la boutique, 
+            et vous trouverez sûrement quelque chose qui vous plaît.</p>
+            
+            <a href="?page=home" class="button">Boutique</a>
+        
+        <?php else: ?>  
+        
+            <h3>Voici le contenu de votre panier</h3>
+            
+            <?php foreach ($productsBasket as $product) : $totalPriceProducts+= $product['qty']*$product['price']; ?>
+            <div class="card cards">
+                <div class="card-body">
+                    <div>
+                        <p>Produit :</p>
+                        <p><?= htmlspecialchars($product['title']); ?></p>
+                    </div>
+                    <div class="card-img">
+                        <img  class="card-image" src="public/img/uploads/items/<?= htmlspecialchars($product['picture']) ?>" alt="Orange" />
+                    </div>
+                    <div>
+                        <p>Quantité :</p>
+                        <p><?= htmlspecialchars($product['qty']); ?></p>
+                    </div>
+                    <div>
+                        <p>Prix unité :</p>
+                        <p><?= htmlspecialchars($product['price']); ?> €</p>
+                    </div>
+                    <div>
+                        <p>Prix global :</p>
+                        <p><?= htmlspecialchars($product['qty'] * $product['price']); ?> €</p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr/>
+                    
+            <?php endforeach; ?>
+            
+                <p>Total d'article de la commande : <?= $totalProducts; ?></p>
+                <p>Prix total de la commande : <?= $totalPriceProducts; ?> €</p>
+        
+                <a href="index.php?page=deleteAllCart" class="button">Vider le panier</a>
+            
+        <?php endif; ?>
+        
+    </article>
+    
+</section>

@@ -1,0 +1,36 @@
+<section class="container field">
+        <section>
+            <h2>Modifier mon compte</h2>
+            
+            <?php require_once '_errors.phtml'; ?>
+            
+            <form action="index.php?page=profil" method="POST">
+                <fieldset>
+                    <div>
+                        <label for="email">Email :</label>
+                        <input type="text" name="email" id="email" value="<?= htmlspecialchars($user['email'], ENT_QUOTES); ?>">
+                    </div>
+                    
+                    <div>
+                        <label for="firstname">Prénom :</label>
+                        <input type="text" name="firstname" id="firstname" value="<?= htmlspecialchars($user['firstname'], ENT_QUOTES); ?>">
+                    </div>
+                    
+                    <div>
+                        <label for="lastname">Nom :</label>
+                        <input type="text" name="lastname" id="lastname" value="<?= htmlspecialchars($user['lastname'], ENT_QUOTES); ?>">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birthdate">Date de naissance :</label>
+                        <input type="date" name="birthdate" id="birthdate" value="<?= htmlspecialchars($user['birthdate'], ENT_QUOTES); ?>">
+                    </div>
+                    
+                    
+                    <div class="my-2">
+                        <button class="btn btn-primary">Modifier</button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+</section>

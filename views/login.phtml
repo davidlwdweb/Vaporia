@@ -1,0 +1,23 @@
+<section class="container field">
+        <h2>Connectez-vous à votre compte</h2>
+        
+        <?php require_once '_errors.phtml'; ?>
+        
+        <form action="index.php?page=login" method="POST">
+            <fieldset>
+                <div>
+                    <label for="email">Email :</label>
+                    <input type="text" name="email" id="email">
+                </div>
+                <div>
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                
+                <div>
+                    <button>Se connecter</button>
+                </div>
+            </fieldset>
+        </form>
+        <p class="center">Si vous possédez déjà un compte et que vous n'arrivez pas à vous connecter, merci de contacter le support Vaporia <u><a href="?page=contact">içi</a></u>.</p>
+</section>

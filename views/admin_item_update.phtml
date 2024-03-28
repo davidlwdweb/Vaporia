@@ -1,0 +1,95 @@
+<section class="container">
+    
+    <p><a href="?page=admin"> Menu administrateur</a> > <a href="?page=admin_items">Liste des produits du site</a> > <span class="current">Ajouter un produit</span></p>
+    
+    <h2>Panneau d'administration</h2>
+    
+    <?php require_once '_errors.phtml'; ?>
+    <?php require_once '_valids.phtml'; ?>
+    
+    <form class="add_item" enctype="multipart/form-data" action="?page=admin_update&id=<?= $item['id_item']; ?>" method="POST">
+        
+        <p class="add_added">Modification d'un article</p>
+        
+        <p>Veuillez choisir la visibiliter du produit :</p>
+        <div>
+            <input type="radio" id="available1" name="available" value="1" checked />
+            <label for="available1">Visible</label>
+            
+            <input type="radio" id="available0" name="available" value="2" <?php if ($item['available'] == 2) echo "checked"; ?> />
+            <label for="available0">Non visible</label>
+        </div>
+        
+        
+        <label for="categorie">Categorie :</label>
+        <select class="pl-1" name="categorie" id="categorie">
+            <option value="">-Choisir une categorie-</option>
+            
+            <?php foreach ($categories as $categorie): ?>
+                <option value="<?= htmlspecialchars($categorie['id_categorie'], ENT_QUOTES) ?>"
+                <?php if($item['categorie_id'] == $categorie['id_categorie']) :?> selected <?php endif; ?>
+                ><?= htmlspecialchars($categorie['title'], ENT_QUOTES)?> </option>
+            <?php endforeach ?>
+                    
+        </select>
+        
+        
+        <label for="maker">Marque :</label>
+        <select class="pl-1" name="maker" id="maker">
+            <option value="">-Choisir une marque-</option>
+            
+            <?php foreach ($makers as $maker): ?>
+                <option value="<?= htmlspecialchars($maker['id_maker'], ENT_QUOTES) ?>"
+                <?php if($item['maker_id'] == $maker['id_maker']) :?> selected <?php endif; ?>
+                ><?= htmlspecialchars($maker['maker'], ENT_QUOTES)?> </option>
+            <?php endforeach ?>
+                    
+        </select>
+
+            
+            <label for="title">Titre :</label>
+            <input type="text" name="title" id="title" value="<?= htmlspecialchars($item['title'], ENT_QUOTES); ?>">
+    
+    
+            <label for="description">Description :</label>
+            <textarea id="description" name="description" rows="10" cols="50"><?= htmlspecialchars($item['description'], ENT_QUOTES); ?></textarea>
+    
+    
+            <label for="price">Prix :</label>
+            <input type="number" name="price" step="0.01" id="price" value="<?= htmlspecialchars($item['price'], ENT_QUOTES); ?>">
+    
+    
+            <label for="quantity">Quantité :</label>
+            <input type="number" name="quantity" id="quantity" value="<?= htmlspecialchars($item['quantity'], ENT_QUOTES); ?>">
+    
+    
+            <label for="power">Puissance :</label>
+            <input type="number" name="power" step="0.1" id="power" value="<?= htmlspecialchars($item['power'], ENT_QUOTES); ?>">
+    
+    
+            <label for="capacity">Capacité :</label>
+            <input type="number" name="capacity" step="0.1"id="capacity" value="<?= htmlspecialchars($item['capacity'], ENT_QUOTES); ?>">
+    
+    
+            <label for="origin">Origine :</label>
+            <input type="text" name="origin" value="France" id="origin" value="<?= htmlspecialchars($item['origin'], ENT_QUOTES); ?>">
+    
+    
+            <label for="battery">Batterie :</label>
+            <input type="text" name="battery" id="battery" value="<?= htmlspecialchars($item['battery'], ENT_QUOTES); ?>">
+    
+    
+            <label for="picture">Choisissez la photo principal de l'objet :</label>
+            <input type="file" id="picture" name="picture" accept="image/png, image/jpeg, image/jpg, image/gif"/>
+        
+            <label for="caption">Description de la photo principal :</label>
+            <textarea id="caption" name="caption" rows="5" cols="30"><?= htmlspecialchars($item['caption'], ENT_QUOTES); ?></textarea>
+            
+    
+        <button>Modifier</button>
+            
+    </form>
+    
+</section>
+
+<script type="text/javascript" src="public/js/adminCategorieAddItems.js"></script>
